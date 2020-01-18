@@ -9,13 +9,16 @@
 #include "Graph_Node.h"
 #include "Graph_Edge.h"
 #include "Rooted_Tree.h"
+#include "Pair.h"
+
+typedef Pair<Graph_Node, Tree_Node> BfsPair;
 
 class Dynamic_Graph {
 private:
     Graph_Node *_firstGraphNode;
     Graph_Edge *_firstGraphEdge;
 
-    void BFS_Initialization(Graph_Node *s, Queue<Graph_Node> *queue) const;
+    void BFS_Initialization(Graph_Node *s, Queue<BfsPair> *queue, Rooted_Tree *bfsTree) const;
 
 public:
     Dynamic_Graph();
