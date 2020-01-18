@@ -3,4 +3,4 @@ project(DSA_Project_2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(DSA_Project_2 main.cpp ListItem.h List.h Queue.h)
+add_executable(DSA_Project_2 main.cpp ListItem.h List.h Queue.h Graph_Node.cpp Graph_Node.h)

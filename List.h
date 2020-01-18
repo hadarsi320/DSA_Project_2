@@ -34,10 +34,11 @@ public:
 template<typename T>
 List<T>::~List()
 {
-    ListItem<T> ptr = _head, next;
+    ListItem<T> *ptr = _head;
+    ListItem<T> *next;
     while(ptr != NULL)
     {
-        next = ptr.getNext();
+        next = ptr->getNext();
         delete ptr;
         ptr = next;
     }

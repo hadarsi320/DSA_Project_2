@@ -1,6 +1,10 @@
 #include <iostream>
+#include "Queue.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Queue<int> queue;
+    int x = 1;
+    queue.enqueue(&x);
+    x += 5;
+    std::cout << *queue.dequeue();
 }
