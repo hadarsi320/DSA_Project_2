@@ -5,7 +5,7 @@
 #include "Graph_Node.h"
 
 Graph_Node::Graph_Node(unsigned int key) :
-_key(key), _inAdjacencyList(), _outAdjacencyList(), _nextNode(NULL), _prevNode(NULL) {}
+_key(key), _inAdjacencyList(), _outAdjacencyList(), _nextNode(NULL), _prevNode(NULL), _color(NOCOLOR) {}
 
 Graph_Node *Graph_Node::getNextNode() const {
     return _nextNode;

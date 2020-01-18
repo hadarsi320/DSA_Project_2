@@ -8,11 +8,14 @@
 
 #include "Graph_Node.h"
 #include "Graph_Edge.h"
+#include "Rooted_Tree.h"
 
 class Dynamic_Graph {
 private:
     Graph_Node *_firstGraphNode;
     Graph_Edge *_firstGraphEdge;
+
+    void BFS_Initialization(Graph_Node *s, Queue<Graph_Node> *queue) const;
 
 public:
     Dynamic_Graph();
@@ -26,6 +29,8 @@ public:
     Graph_Edge* Insert_Edge(Graph_Node* from, Graph_Node* to);
 
     void Delete_Edge(Graph_Edge* edge);
+
+    Rooted_Tree *BFS(Graph_Node *source) const;
 };
 
 

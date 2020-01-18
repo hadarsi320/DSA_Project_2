@@ -94,5 +94,29 @@ void Dynamic_Graph::Delete_Edge(Graph_Edge *edge)
     delete edge;
 }
 
+void Dynamic_Graph::BFS_Initialization(Graph_Node *s, Queue<Graph_Node> *queue) const {
+    Graph_Node *ptr = _firstGraphNode;
+    while (ptr != NULL) {
+        ptr->_color = WHITE;
+    }
+    s->_color = GREY;
+    queue->enqueue(s); //TODO maybe do star?
+}
+
+Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
+{
+    Queue<Graph_Node> queue;
+    BFS_Initialization(source, &queue);
+    Rooted_Tree rootedTree;
+    Tree_Node *root = new Tree_Node(source->getKey());
+    rootedTree.setRoot(root);
+
+    Tree_Node *activeTreeNode = root;
+    Tree_Node *lastInstertedChild;
+    while (!queue.isEmpty()) {
+
+    }
+}
+
 
 

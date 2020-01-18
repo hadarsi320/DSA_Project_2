@@ -5,8 +5,14 @@
 #ifndef DSA_PROJECT_2_GRAPH_NODE_H
 #define DSA_PROJECT_2_GRAPH_NODE_H
 
+#define NOCOLOR 0
+#define WHITE 1
+#define GREY 2
+#define BLACK 3
 
 #include "List.h"
+
+typedef int Color;
 
 class Graph_Node {
 private:
@@ -17,6 +23,8 @@ private:
     unsigned _key;
 
 public:
+    Color _color;
+
     Graph_Node(unsigned int key);
 
     virtual ~Graph_Node() {}
@@ -53,6 +61,7 @@ public:
     void removeInNeighbour(ListItem<Graph_Node> *neighbour);
 
     void removeOutNeighbour(ListItem<Graph_Node> *neighbour);
+
 
 };
 
