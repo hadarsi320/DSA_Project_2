@@ -46,9 +46,9 @@ public:
 
     unsigned int getKey() const;
 
-    void addInNeighbour(Graph_Node * inNeighbour);
+    ListItem<Graph_Node> * addInNeighbour(Graph_Node * inNeighbour);
 
-    void addOutNeighbour(Graph_Node * outNeighbour);
+    ListItem<Graph_Node> * addOutNeighbour(Graph_Node * outNeighbour);
 
 };
 

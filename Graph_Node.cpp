@@ -27,4 +27,14 @@ unsigned int Graph_Node::getKey() const {
     return _key;
 }
 
+ListItem<Graph_Node> * Graph_Node::addInNeighbour(Graph_Node *inNeighbour) {
+    _inAdjacencyList.insert(inNeighbour);
+    return _inAdjacencyList.getHead();
+}
+
+ListItem<Graph_Node> * Graph_Node::addOutNeighbour(Graph_Node *outNeighbour) {
+    _outAdjacencyList.insert(outNeighbour);
+    return _outAdjacencyList.getHead();
+}
+
 
