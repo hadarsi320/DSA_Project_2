@@ -9,7 +9,7 @@ Rooted_Tree::~Rooted_Tree() {
 }
 
 void Rooted_Tree::Print_By_Layer(std::ostream &stream) const {
-    Queue<Tree_Node *> queue;
+    Queue<Tree_Node> queue;
     Tree_Node *x = _root;
     Tree_Node *newLayerPtr = NULL;
     while (x != NULL or !queue.isEmpty()) {
@@ -22,6 +22,10 @@ void Rooted_Tree::Print_By_Layer(std::ostream &stream) const {
         if (newLayerPtr == x) {
             stream << "\n";
             newLayerPtr = x->getLeftChild();
+        }
+        else {
+            if (x != _root)
+                stream << ",";
         }
         stream << x->getKey();
         if (x->getLeftChild() != NULL) {

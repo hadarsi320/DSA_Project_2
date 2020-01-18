@@ -66,7 +66,7 @@ int main()
     std::stringbuf buffer;      // empty stringbuf
     std::ostream os (&buffer);  // associate stream buffer to stream
     // mixing output to buffer with inserting to associated stream:
-    buffer.sputn ("Tree:\n",5);
+    buffer.sputn ("",0);
     rootedTree.Print_By_Layer(os);
     std::cout << buffer.str() << std::endl;
 }

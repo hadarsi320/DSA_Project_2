@@ -40,4 +40,9 @@ T *Queue<T>::dequeue()
     return dataPtr;
 }
 
+template<typename T>
+bool Queue<T>::isEmpty() const {
+    return _list.isEmpty();
+}
+
 #endif //DSA_PROJECT_2_QUEUE_H
