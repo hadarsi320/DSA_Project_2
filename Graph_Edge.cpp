@@ -4,11 +4,23 @@
 
 #include "Graph_Edge.h"
 
-const Graph_Node *Graph_Edge::getSrc() const {
+Graph_Edge::Graph_Edge(Graph_Node *src, Graph_Node *dest) :
+        _src(src), _dest(dest), _destInSrc(NULL), _srcInDest(NULL), _nextEdge(NULL), _prevEdge(NULL) {
+    _destInSrc = _src->addOutNeighbour(_dest);
+    _srcInDest = _dest->addInNeighbour(_src);
+}
+
+Graph_Edge::~Graph_Edge()
+{
+    _src->removeOutNeighbour(_destInSrc);
+    _dest->removeInNeighbour(_srcInDest);
+}
+
+Graph_Node *Graph_Edge::getSrc() const {
     return _src;
 }
 
-const Graph_Node *Graph_Edge::getDest() const {
+Graph_Node *Graph_Edge::getDest() const {
     return _dest;
 }
 
@@ -34,10 +46,4 @@ void Graph_Edge::setNextEdge(Graph_Edge *nextEdge) {
 
 void Graph_Edge::setPrevEdge(Graph_Edge *prevEdge) {
     _prevEdge = prevEdge;
-}
-
-Graph_Edge::Graph_Edge(Graph_Node *src, Graph_Node *dest) :
-_src(src), _dest(dest), _destInSrc(NULL), _srcInDest(NULL), _nextEdge(NULL), _prevEdge(NULL) {
-    _destInSrc = _src->addOutNeighbour(_dest);
-    _srcInDest = _dest->addInNeighbour(_src);
 }

@@ -20,6 +20,8 @@ private:
 public:
     Graph_Edge(Graph_Node *src, Graph_Node *dest);
 
+    ~Graph_Edge();
+
     Graph_Node *getSrc() const;
 
     Graph_Node *getDest() const;

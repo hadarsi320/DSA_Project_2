@@ -50,6 +50,10 @@ public:
 
     ListItem<Graph_Node> * addOutNeighbour(Graph_Node * outNeighbour);
 
+    void removeInNeighbour(ListItem<Graph_Node> *neighbour);
+
+    void removeOutNeighbour(ListItem<Graph_Node> *neighbour);
+
 };
 
 

@@ -37,4 +37,14 @@ ListItem<Graph_Node> * Graph_Node::addOutNeighbour(Graph_Node *outNeighbour) {
     return _outAdjacencyList.getHead();
 }
 
+void Graph_Node::removeInNeighbour(ListItem<Graph_Node> *neighbour)
+{
+    _inAdjacencyList.remove(neighbour);
+}
+
+void Graph_Node::removeOutNeighbour(ListItem<Graph_Node> *neighbour)
+{
+    _outAdjacencyList.remove(neighbour);
+}
+
 
