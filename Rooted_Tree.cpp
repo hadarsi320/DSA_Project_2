@@ -40,13 +40,14 @@ void Rooted_Tree::Preorder_Print(std::ostream &stream) const {
         stream << "TREE IS EMPTY!";
         return;
     }
-    preorderPrintNode(stream, _root);
+    stream << _root->getKey();
+    preorderPrintNode(stream, _root->getLeftChild());
 }
 
 void Rooted_Tree::preorderPrintNode(std::ostream &stream, Tree_Node *currentNode) const {
     if (currentNode == NULL)
         return;
-    stream << currentNode->getKey() << ",";
+    stream << "," << currentNode->getKey();
     preorderPrintNode(stream, currentNode->getLeftChild());
     preorderPrintNode(stream, currentNode->getRightSibling());
 }

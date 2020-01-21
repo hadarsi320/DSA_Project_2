@@ -67,8 +67,17 @@ int main()
     std::ostream os (&buffer);  // associate stream buffer to stream
     // mixing output to buffer with inserting to associated stream:
     buffer.sputn ("",0);
-    rootedTree.Print_By_Layer(os);
+    rootedTree.Print_By_Layer(os);  // Print_By_Layer --------------------------------
     std::cout << buffer.str() << std::endl;
+
+    // printing
+    std::cout << std::endl;
+    std::stringbuf buffer3;      // empty stringbuf
+    std::ostream os3 (&buffer3);  // associate stream buffer to stream
+    // mixing output to buffer with inserting to associated stream:
+    buffer3.sputn ("",0);
+    rootedTree.Preorder_Print(os3);
+    std::cout << buffer3.str() << std::endl;
 
     //===================================================
     dynamicGraph = new Dynamic_Graph();
