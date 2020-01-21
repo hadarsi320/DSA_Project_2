@@ -121,6 +121,7 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
     {
 
     }
+    return bfsTree;
 }
 
 
