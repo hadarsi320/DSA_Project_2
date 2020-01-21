@@ -47,4 +47,12 @@ void Graph_Node::removeOutNeighbour(ListItem<Graph_Node> *neighbour)
     _outAdjacencyList.remove(neighbour);
 }
 
+ListItem<Graph_Node> *Graph_Node::getFirstInNeighbour() {
+    return _inAdjacencyList.getHead();
+}
+
+ListItem<Graph_Node> *Graph_Node::getFirstOutNeighbour() {
+    return _outAdjacencyList.getHead();
+}
+
 

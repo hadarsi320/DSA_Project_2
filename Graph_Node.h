@@ -62,7 +62,9 @@ public:
 
     void removeOutNeighbour(ListItem<Graph_Node> *neighbour);
 
+    ListItem<Graph_Node> * getFirstInNeighbour();
 
+    ListItem<Graph_Node> * getFirstOutNeighbour();
 };
 
 

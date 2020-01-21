@@ -112,13 +112,15 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
 {
     // initialize BFS
     Queue<Pair<Graph_Node, Tree_Node>> queue;
-    Rooted_Tree *bfsTree;
+    Rooted_Tree *bfsTree = new Rooted_Tree;
     BFS_Initialization(source, &queue, bfsTree);
 
     Pair<Graph_Node, Tree_Node> *currentPair;
-    Tree_Node *leftNode;
+    Graph_Node * currentNeighbour;
+    Tree_Node *currentLeftChild;
     while (!queue.isEmpty())
     {
+        currentPair = queue.dequeue();
 
     }
     return bfsTree;
