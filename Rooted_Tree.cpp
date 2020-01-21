@@ -34,3 +34,19 @@ void Rooted_Tree::Print_By_Layer(std::ostream &stream) const {
         x = x->getRightSibling();
     }
 }
+
+void Rooted_Tree::Preorder_Print(std::ostream &stream) const {
+    if (_root == NULL) {
+        stream << "TREE IS EMPTY!";
+        return;
+    }
+    preorderPrintNode(stream, _root);
+}
+
+void Rooted_Tree::preorderPrintNode(std::ostream &stream, Tree_Node *currentNode) const {
+    if (currentNode == NULL)
+        return;
+    stream << currentNode->getKey() << ",";
+    preorderPrintNode(stream, currentNode->getLeftChild());
+    preorderPrintNode(stream, currentNode->getRightSibling());
+}

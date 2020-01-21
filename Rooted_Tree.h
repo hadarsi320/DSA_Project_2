@@ -14,6 +14,8 @@ class Rooted_Tree {
 private:
     Tree_Node * _root;
 
+    void preorderPrintNode(std::ostream& stream, Tree_Node *currentNode) const;
+
 public:
     Rooted_Tree() : _root(NULL) {}
 
