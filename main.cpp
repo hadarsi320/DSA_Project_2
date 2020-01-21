@@ -73,8 +73,8 @@ int main()
     //===================================================
     dynamicGraph = new Dynamic_Graph();
     Graph_Node * graphNodetz[14];
-    for (int i=0; i<=13; i++) {
-        graphNodetz[i] = new Graph_Node(i);
+    for (int i=13; i>=0; i--) {
+        graphNodetz[i] = dynamicGraph->Insert_Node(i);
     }
     dynamicGraph->Insert_Edge(graphNodetz[0], graphNodetz[1]);
     dynamicGraph->Insert_Edge(graphNodetz[0], graphNodetz[2]);
