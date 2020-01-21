@@ -9,10 +9,10 @@
 
 template <typename T, typename U> class Pair {
 public:
-    T * _first;
-    U * _second;
+    T * first;
+    U * second;
 
-    Pair(T *first, U *second) : _first(first), _second(second) {}
+    Pair(T *first, U *second) : first(first), second(second) {}
 };
 
 #endif //DSA_PROJECT_2_PAIR_H

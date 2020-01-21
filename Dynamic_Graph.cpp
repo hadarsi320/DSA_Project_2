@@ -99,10 +99,10 @@ void Dynamic_Graph::BFS_Initialization(Graph_Node *s, Queue<BfsPair> *queue,
     Graph_Node *ptr = _firstGraphNode;
     while (ptr != NULL)
     {
-        ptr->_color = WHITE;
+        ptr->color = WHITE;
         ptr = ptr->getNextNode();
     }
-    s->_color = GREY;
+    s->color = GREY;
     Tree_Node *root = new Tree_Node(s->getKey());
     bfsTree->setRoot(root);
     queue->enqueue(new BfsPair(s, root));
@@ -115,13 +115,32 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
     Rooted_Tree *bfsTree = new Rooted_Tree;
     BFS_Initialization(source, &queue, bfsTree);
 
-    Pair<Graph_Node, Tree_Node> *currentPair;
-    Graph_Node * currentNeighbour;
-    Tree_Node *currentLeftChild;
+    BfsPair *currentPair;
+    ListItem<Graph_Node> *currentNeighbour = NULL;
+    Tree_Node *currentLeftChild = NULL;
+    Graph_Node *currentNode = NULL;
     while (!queue.isEmpty())
     {
         currentPair = queue.dequeue();
-
+        currentNeighbour = currentPair->first->getFirstOutNeighbour();
+        while (currentNeighbour != NULL)
+        {
+            currentNode = currentNeighbour->getData();
+            if (currentNode->color == WHITE)
+            {
+                currentNode->color = GREY;
+                Tree_Node *matchingTreeNode = new Tree_Node(currentNode->getKey());
+                matchingTreeNode->setParent(currentPair->second);
+                if (currentLeftChild == NULL)
+                    currentPair->second->setLeftChild(matchingTreeNode);
+                else
+                    currentLeftChild->setRightSibling(matchingTreeNode);
+                currentLeftChild = matchingTreeNode;
+                queue.enqueue(new BfsPair(currentNode, matchingTreeNode));
+            }
+        }
+        currentPair->first->color = BLACK;
+        currentLeftChild = NULL;
     }
     return bfsTree;
 }

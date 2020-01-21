@@ -23,7 +23,7 @@ private:
     unsigned _key;
 
 public:
-    Color _color;
+    Color color;
 
     Graph_Node(unsigned int key);
 
