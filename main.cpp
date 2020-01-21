@@ -69,4 +69,35 @@ int main()
     buffer.sputn ("",0);
     rootedTree.Print_By_Layer(os);
     std::cout << buffer.str() << std::endl;
+
+    //===================================================
+    dynamicGraph = new Dynamic_Graph();
+    Graph_Node * graphNodetz[14];
+    for (int i=0; i<=13; i++) {
+        graphNodetz[i] = new Graph_Node(i);
+    }
+    dynamicGraph->Insert_Edge(graphNodetz[0], graphNodetz[1]);
+    dynamicGraph->Insert_Edge(graphNodetz[0], graphNodetz[2]);
+    dynamicGraph->Insert_Edge(graphNodetz[0], graphNodetz[3]);
+    dynamicGraph->Insert_Edge(graphNodetz[1], graphNodetz[4]);
+    dynamicGraph->Insert_Edge(graphNodetz[1], graphNodetz[5]);
+    dynamicGraph->Insert_Edge(graphNodetz[2], graphNodetz[6]);
+    dynamicGraph->Insert_Edge(graphNodetz[2], graphNodetz[7]);
+    dynamicGraph->Insert_Edge(graphNodetz[2], graphNodetz[8]);
+    dynamicGraph->Insert_Edge(graphNodetz[2], graphNodetz[9]);
+    dynamicGraph->Insert_Edge(graphNodetz[3], graphNodetz[10]);
+    dynamicGraph->Insert_Edge(graphNodetz[5], graphNodetz[11]);
+    dynamicGraph->Insert_Edge(graphNodetz[8], graphNodetz[12]);
+    dynamicGraph->Insert_Edge(graphNodetz[8], graphNodetz[13]);
+
+    // printing
+    std::cout << std::endl;
+    std::stringbuf buffer2;      // empty stringbuf
+    std::ostream os2 (&buffer2);  // associate stream buffer to stream
+    // mixing output to buffer with inserting to associated stream:
+    buffer2.sputn ("",0);
+    dynamicGraph->BFS(graphNodetz[0])->Print_By_Layer(os2);
+    std::cout << buffer2.str() << std::endl;
+
+    delete dynamicGraph;
 }

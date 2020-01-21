@@ -115,7 +115,7 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
     Rooted_Tree *bfsTree = new Rooted_Tree;
     BFS_Initialization(source, &queue, bfsTree);
 
-    BfsPair *currentPair;
+    BfsPair *currentPair = NULL;
     ListItem<Graph_Node> *currentNeighbour = NULL;
     Tree_Node *currentLeftChild = NULL;
     Graph_Node *currentNode = NULL;
@@ -138,6 +138,7 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
                 currentLeftChild = matchingTreeNode;
                 queue.enqueue(new BfsPair(currentNode, matchingTreeNode));
             }
+            currentNeighbour = currentNeighbour->getNext();
         }
         currentPair->first->color = BLACK;
         delete currentPair;
