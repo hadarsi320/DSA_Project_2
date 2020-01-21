@@ -140,10 +140,8 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
             }
         }
         currentPair->first->color = BLACK;
+        delete currentPair;
         currentLeftChild = NULL;
     }
     return bfsTree;
 }
-
-
-
