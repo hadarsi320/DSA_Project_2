@@ -128,6 +128,9 @@ int main()
     dynamicGraph->BFS(graphNodetz[0])->Print_By_Layer(os2);
     std::cout << buffer2.str() << std::endl;
 
+    std::cout << std::endl;
+    dynamicGraph->generatePsi();
+
     delete dynamicGraph;
 
 

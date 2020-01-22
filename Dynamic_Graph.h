@@ -5,7 +5,10 @@
 #ifndef DSA_PROJECT_2_DYNAMIC_GRAPH_H
 #define DSA_PROJECT_2_DYNAMIC_GRAPH_H
 
-
+#include <sstream> //TODO remove this kaki flotz
+#include <string>
+#include <iostream>
+using namespace std;
 #include "Graph_Node.h"
 #include "Graph_Edge.h"
 #include "Rooted_Tree.h"
@@ -23,7 +26,7 @@ private:
 
     void resetColors() const;
 
-    Stack<Graph_Node> generatePsi();
+    void generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psiStack) const;
 
 public:
     Dynamic_Graph();
@@ -41,6 +44,9 @@ public:
     Rooted_Tree *BFS(Graph_Node *source) const;
 
     Rooted_Tree* SCC() const;
+
+    Stack<Graph_Node> generatePsi() const;
+
 };
 
 

@@ -13,6 +13,7 @@
 #include "List.h"
 
 typedef int Color;
+typedef int Time;
 
 class Graph_Node {
 private:

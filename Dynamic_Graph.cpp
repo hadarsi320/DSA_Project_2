@@ -142,7 +142,8 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
     return bfsTree;
 }
 
-void Dynamic_Graph::resetColors() const {
+void Dynamic_Graph::resetColors() const
+{
     Graph_Node *ptr = _firstGraphNode;
     while (ptr != NULL)
     {
@@ -151,7 +152,31 @@ void Dynamic_Graph::resetColors() const {
     }
 }
 
-//Stack <Graph_Node> Dynamic_Graph::generatePsi() {
-//    resetColors();
-//
-//}
+Stack <Graph_Node> Dynamic_Graph::generatePsi() const
+{
+    resetColors();
+    Graph_Node *ptr = _firstGraphNode;
+    Stack<Graph_Node> psiStack;
+    while (ptr != NULL)
+    {
+        if (ptr->color == WHITE)
+            generatePsiVisit(ptr, &psiStack);
+        ptr = ptr->getNextNode();
+    }
+    while (!psiStack.isEmpty())
+        cout << psiStack.pop()->getKey() << " ";
+    cout << endl;
+}
+
+void Dynamic_Graph::generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psiStack) const
+{
+    nodePtr->color = GREY;
+    ListItem<Graph_Node> * neighbourPtr = nodePtr->getFirstOutNeighbour();
+    while (neighbourPtr != NULL)
+    {
+        if (neighbourPtr->getData()->color == WHITE)
+            generatePsiVisit(neighbourPtr->getData(), psiStack);
+        neighbourPtr = neighbourPtr->getNext();
+    }
+    psiStack->push(nodePtr);
+}
