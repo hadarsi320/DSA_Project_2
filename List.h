@@ -19,8 +19,6 @@ public:
 
     List<T> &operator = (const List &l);
 
-    void swapLists(List &other);
-
     virtual ~List();
 
     ListItem<T> *getHead() const;
@@ -35,6 +33,8 @@ public:
 
     void remove(ListItem<T> *item);
 
+    void swapLists(List &other);
+
 };
 
 template<typename T>
@@ -48,14 +48,6 @@ List<T> &List<T>::operator=(const List &l)
 {
     _head = l._head;
     return *this;
-}
-
-template<typename T>
-void List<T>::swapLists(List &other)
-{
-    ListItem<T> *temp = this->_head;
-    this->_head = other._head;
-    other._head = temp;
 }
 
 template<typename T>
@@ -136,6 +128,16 @@ void List<T>::remove(ListItem<T> *item)
 
     item->setNext(NULL);
     item->setPrev(NULL);
+
+    delete item;
+}
+
+template<typename T>
+void List<T>::swapLists(List &other)
+{
+    ListItem<T> *temp = this->_head;
+    this->_head = other._head;
+    other._head = temp;
 }
 
 #endif //DSA_PROJECT_2_LIST_H

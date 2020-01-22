@@ -78,8 +78,9 @@ Graph_Edge *Dynamic_Graph::Insert_Edge(Graph_Node *from, Graph_Node *to)
 
 void Dynamic_Graph::Delete_Edge(Graph_Edge *edge)
 {
-    if(edge == NULL)
-        return;
+    //TODO delete this comment unless this code proves itself necessary
+//    if(edge == NULL)
+//        return;
     if(edge == _firstGraphEdge)
     {
         _firstGraphEdge = edge->getNextEdge();
@@ -172,7 +173,7 @@ Stack<Graph_Node> *Dynamic_Graph::generatePsi() const
 void Dynamic_Graph::generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psiStack) const
 {
     nodePtr->color = GREY;
-    ListItem<Graph_Node> * neighbourPtr = nodePtr->getFirstOutNeighbour();
+    ListItem<Graph_Node> *neighbourPtr = nodePtr->getFirstOutNeighbour();
     while (neighbourPtr != NULL)
     {
         if (neighbourPtr->getData()->color == WHITE)
@@ -248,6 +249,7 @@ Rooted_Tree *Dynamic_Graph::SCC() const {
     Stack<Graph_Node> *psiStack = generatePsi();
     transpose();
     Queue<Tree_Node> *treeNodeQueue = DFS(psiStack);
+    delete psiStack;
     Rooted_Tree *sccRootedTree = new Rooted_Tree();
     Tree_Node *root = new Tree_Node(0);
     sccRootedTree->setRoot(root);
@@ -256,14 +258,15 @@ Rooted_Tree *Dynamic_Graph::SCC() const {
     while (!treeNodeQueue->isEmpty())
     {
         sccRoot = treeNodeQueue->dequeue();
-        if (lefterChild != NULL)
+        if (lefterChild != NULL) {
             lefterChild->setRightSibling(sccRoot);
-        else
+        }
+        else {
             root->setLeftChild(sccRoot);
+        }
         sccRoot->setParent(root);
         lefterChild = sccRoot;
     }
-    delete psiStack;
     delete treeNodeQueue;
     transpose();
     return sccRootedTree;

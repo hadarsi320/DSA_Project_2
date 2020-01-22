@@ -7,6 +7,11 @@
 Graph_Node::Graph_Node(unsigned int key) :
         _key(key), _inAdjacencyList(), _outAdjacencyList(), _nextNode(NULL), _prevNode(NULL), color(NOCOLOR) {}
 
+Graph_Node::~Graph_Node()
+{
+
+}
+
 unsigned Graph_Node::Get_key() const {
     return _key;
 }

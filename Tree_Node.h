@@ -18,9 +18,10 @@ public:
     Tree_Node(unsigned int key=0, Tree_Node *parent=NULL, Tree_Node *leftChild=NULL, Tree_Node *rightSibling=NULL) :
             _key(key), _parent(parent), _leftChild(leftChild), _rightSibling(rightSibling) {}
 
-    ~Tree_Node() {
-        delete _leftChild;
+    ~Tree_Node()
+    {
         delete _rightSibling;
+        delete _leftChild;
     }
 
     unsigned int getKey() const {
