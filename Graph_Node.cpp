@@ -58,9 +58,10 @@ ListItem<Graph_Node> *Graph_Node::getFirstOutNeighbour() {
 
 void Graph_Node::transposeNode()
 {
-    List<Graph_Node> temp = _outAdjacencyList;
-    _outAdjacencyList = _inAdjacencyList;
-    _inAdjacencyList = temp;
+    _outAdjacencyList.swapLists(_inAdjacencyList);
+//    List<Graph_Node> temp = _outAdjacencyList;
+//    _outAdjacencyList = _inAdjacencyList;
+//    _inAdjacencyList = temp;
 }
 
 

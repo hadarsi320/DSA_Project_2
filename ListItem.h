@@ -18,6 +18,11 @@ public:
     ListItem(T *data, ListItem<T> *next=NULL, ListItem<T> *prev=NULL) :
     _data(data), _next(next), _prev(prev) {}
 
+    //TODO check whether these two are necessary
+    ListItem(const ListItem &listItem);
+
+    ListItem<T> &operator = (const ListItem &listItem);
+
     T *getData() const {
         return _data;
     }
@@ -38,5 +43,22 @@ public:
         _prev = prev;
     }
 };
+
+template<typename T>
+ListItem<T>::ListItem(const ListItem &listItem)
+{
+    this->_prev = listItem._prev;
+    this->_next = listItem._next;
+    this->_data = listItem._data;
+}
+
+template<typename T>
+ListItem<T> &ListItem<T>::operator=(const ListItem &listItem)
+{
+    this->_prev = listItem._prev;
+    this->_next = listItem._next;
+    this->_data = listItem._data;
+    return *this;
+}
 
 #endif //DSA_PROJECT_2_LISTITEM_H

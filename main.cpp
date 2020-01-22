@@ -93,9 +93,6 @@ bool deleted_node(unsigned key, My_Edge* my_edge_array[], unsigned edges_array_c
 
 int main()
 {
-//    Graph_Node *itzik = new Graph_Node(5);
-//    delete itzik;
-
 
     srand(SEED);
 

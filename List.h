@@ -19,6 +19,8 @@ public:
 
     List<T> &operator = (const List &l);
 
+    void swapLists(List &other);
+
     virtual ~List();
 
     ListItem<T> *getHead() const;
@@ -44,8 +46,16 @@ List<T>::List(const List &l)
 template<typename T>
 List<T> &List<T>::operator=(const List &l)
 {
-    this->_head = l._head;
+    _head = l._head;
     return *this;
+}
+
+template<typename T>
+void List<T>::swapLists(List &other)
+{
+    ListItem<T> *temp = this->_head;
+    this->_head = other._head;
+    other._head = temp;
 }
 
 template<typename T>
