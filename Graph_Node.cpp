@@ -7,6 +7,17 @@
 Graph_Node::Graph_Node(unsigned int key) :
         _key(key), _inAdjacencyList(), _outAdjacencyList(), _nextNode(NULL), _prevNode(NULL), color(NOCOLOR) {}
 
+unsigned Graph_Node::Get_key() const {
+    return _key;
+}
+
+unsigned Graph_Node::Get_in_Degree() const {
+    return _inAdjacencyList.length();
+}
+
+unsigned Graph_Node::Get_out_Degree() const {
+    return _outAdjacencyList.length();
+}
 
 Graph_Node *Graph_Node::getNextNode() const {
     return _nextNode;
@@ -63,5 +74,6 @@ void Graph_Node::transposeNode()
 //    _outAdjacencyList = _inAdjacencyList;
 //    _inAdjacencyList = temp;
 }
+
 
 

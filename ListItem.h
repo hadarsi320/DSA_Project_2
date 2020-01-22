@@ -20,7 +20,6 @@ public:
 
     //TODO check whether these two are necessary
     ListItem(const ListItem &listItem);
-
     ListItem<T> &operator = (const ListItem &listItem);
 
     T *getData() const {

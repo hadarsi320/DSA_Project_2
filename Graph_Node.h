@@ -30,20 +30,11 @@ public:
 
     //    virtual ~Graph_Node() {}
 
-    unsigned Get_out_Degree() const
-    {
-        return _outAdjacencyList.length();
-    }
+    unsigned Get_out_Degree() const;
 
-    unsigned Get_in_Degree() const
-    {
-        return _inAdjacencyList.length();
-    }
+    unsigned Get_in_Degree() const;
 
-    unsigned Get_key() const
-    {
-        return _key;
-    }
+    unsigned Get_key() const;
 
     Graph_Node *getNextNode() const;
 

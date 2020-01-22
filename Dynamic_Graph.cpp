@@ -108,17 +108,19 @@ void Dynamic_Graph::BFS_Initialization(Graph_Node *s, Queue<BfsPair> *queue,
 Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
 {
     // initialize BFS
-    Queue<Pair<Graph_Node, Tree_Node> > queue;
+    Queue<BfsPair> BFSQueue;
     Rooted_Tree *bfsTree = new Rooted_Tree;
-    BFS_Initialization(source, &queue, bfsTree);
+    BFS_Initialization(source, &BFSQueue, bfsTree);
 
     BfsPair *currentPair = NULL;
     ListItem<Graph_Node> *currentNeighbour = NULL;
-    Tree_Node *currentLeftChild = NULL;
+    Tree_Node *lefterTreeNode = NULL;
     Graph_Node *currentNode = NULL;
-    while (!queue.isEmpty())
+    Tree_Node *matchingTreeNode = NULL;
+
+    while (!BFSQueue.isEmpty())
     {
-        currentPair = queue.dequeue();
+        currentPair = BFSQueue.dequeue();
         currentNeighbour = currentPair->first->getFirstOutNeighbour();
         while (currentNeighbour != NULL)
         {
@@ -126,20 +128,19 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
             if (currentNode->color == WHITE)
             {
                 currentNode->color = GREY;
-                Tree_Node *matchingTreeNode = new Tree_Node(currentNode->getKey());
-                matchingTreeNode->setParent(currentPair->second);
-                if (currentLeftChild == NULL)
+                matchingTreeNode = new Tree_Node(currentNode->getKey(), currentPair->second);
+                if (lefterTreeNode == NULL)
                     currentPair->second->setLeftChild(matchingTreeNode);
                 else
-                    currentLeftChild->setRightSibling(matchingTreeNode);
-                currentLeftChild = matchingTreeNode;
-                queue.enqueue(new BfsPair(currentNode, matchingTreeNode));
+                    lefterTreeNode->setRightSibling(matchingTreeNode);
+                lefterTreeNode = matchingTreeNode;
+                BFSQueue.enqueue(new BfsPair(currentNode, matchingTreeNode));
             }
             currentNeighbour = currentNeighbour->getNext();
         }
         currentPair->first->color = BLACK;
         delete currentPair;
-        currentLeftChild = NULL;
+        lefterTreeNode = NULL;
     }
     return bfsTree;
 }
@@ -198,8 +199,6 @@ void Dynamic_Graph::transpose() const
     }
 }
 
-
-//TODO changes return type to Queue if the print order is incorrect
 Queue<Tree_Node> * Dynamic_Graph::DFS(Stack<Graph_Node> *psiStack) const
 {
     Queue<Tree_Node> *treeNodeQueue = new Queue<Tree_Node>();
