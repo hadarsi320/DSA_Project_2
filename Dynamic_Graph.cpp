@@ -200,9 +200,9 @@ void Dynamic_Graph::transpose() const
 
 
 //TODO changes return type to Queue if the print order is incorrect
-Stack<Tree_Node> * Dynamic_Graph::DFS(Stack<Graph_Node> *psiStack) const
+Queue<Tree_Node> * Dynamic_Graph::DFS(Stack<Graph_Node> *psiStack) const
 {
-    Stack<Tree_Node> *treeNodeStack = new Stack<Tree_Node>();
+    Queue<Tree_Node> *treeNodeQueue = new Queue<Tree_Node>();
     resetColors();
     while (!psiStack->isEmpty())
     {
@@ -211,10 +211,10 @@ Stack<Tree_Node> * Dynamic_Graph::DFS(Stack<Graph_Node> *psiStack) const
         {
             Tree_Node *treeRoot = new Tree_Node(graphNodePtr->getKey());
             DFSVisit(graphNodePtr, treeRoot);
-            treeNodeStack->push(treeRoot);
+            treeNodeQueue->enqueue(treeRoot);
         }
     }
-    return treeNodeStack;
+    return treeNodeQueue;
 }
 
 void Dynamic_Graph::DFSVisit(Graph_Node *currentGraphNode, Tree_Node *parentTreeNode) const
@@ -248,15 +248,15 @@ void Dynamic_Graph::DFSVisit(Graph_Node *currentGraphNode, Tree_Node *parentTree
 Rooted_Tree *Dynamic_Graph::SCC() const {
     Stack<Graph_Node> *psiStack = generatePsi();
     transpose();
-    Stack<Tree_Node> *treeNodeStack = DFS(psiStack);
+    Queue<Tree_Node> *treeNodeQueue = DFS(psiStack);
     Rooted_Tree *sccRootedTree = new Rooted_Tree();
     Tree_Node *root = new Tree_Node(0);
     sccRootedTree->setRoot(root);
     Tree_Node *lefterChild = NULL;
     Tree_Node *sccRoot = NULL;
-    while (!treeNodeStack->isEmpty())
+    while (!treeNodeQueue->isEmpty())
     {
-        sccRoot = treeNodeStack->pop();
+        sccRoot = treeNodeQueue->dequeue();
         if (lefterChild != NULL)
             lefterChild->setRightSibling(sccRoot);
         else
@@ -265,7 +265,7 @@ Rooted_Tree *Dynamic_Graph::SCC() const {
         lefterChild = sccRoot;
     }
     delete psiStack;
-    delete treeNodeStack;
+    delete treeNodeQueue;
     transpose();
     return sccRootedTree;
 }

@@ -26,7 +26,7 @@ private:
 
     Stack<Graph_Node> * generatePsi() const;
 
-    Stack<Tree_Node> * DFS(Stack<Graph_Node> *psiStack) const;
+    Queue<Tree_Node> * DFS(Stack<Graph_Node> *psiStack) const;
 
     void DFSVisit(Graph_Node *currentGraphNode, Tree_Node *parentTreeNode) const;
 
