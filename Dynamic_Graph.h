@@ -26,7 +26,9 @@ private:
 
     Stack<Graph_Node> * generatePsi() const;
 
-    void transpose() const;
+    Stack<Tree_Node> * DFS(Stack<Graph_Node> *psiStack) const;
+
+    void DFSVisit(Graph_Node *currentGraphNode, Tree_Node *parentTreeNode) const;
 
 public:
     Dynamic_Graph();
@@ -43,7 +45,7 @@ public:
 
     Rooted_Tree *BFS(Graph_Node *source) const;
 
-
+    void transpose() const;
 
     Rooted_Tree* SCC() const;
 };

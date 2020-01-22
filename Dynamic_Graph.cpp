@@ -152,7 +152,7 @@ void Dynamic_Graph::resetColors() const
     }
 }
 
-Stack<Graph_Node> * Dynamic_Graph::generatePsi() const
+Stack<Graph_Node> *Dynamic_Graph::generatePsi() const
 {
     resetColors();
     Graph_Node *ptr = _firstGraphNode;
@@ -194,4 +194,75 @@ void Dynamic_Graph::transpose() const
         graphEdgePtr->transposeEdge();
         graphEdgePtr = graphEdgePtr->getNextEdge();
     }
+}
+
+
+//TODO changes return type to Queue if the print order is incorrect
+Stack<Tree_Node> * Dynamic_Graph::DFS(Stack<Graph_Node> *psiStack) const
+{
+    Stack<Tree_Node> *treeNodeStack = new Stack<Tree_Node>();
+    resetColors();
+    while (!psiStack->isEmpty())
+    {
+        Graph_Node *graphNodePtr = psiStack->pop();
+        if (graphNodePtr->color == WHITE)
+        {
+            Tree_Node *treeRoot = new Tree_Node(graphNodePtr->getKey());
+            DFSVisit(graphNodePtr, treeRoot);
+            treeNodeStack->push(treeRoot);
+        }
+    }
+    return treeNodeStack;
+}
+
+void Dynamic_Graph::DFSVisit(Graph_Node *currentGraphNode, Tree_Node *parentTreeNode) const
+{
+    currentGraphNode->color = GREY;
+    ListItem<Graph_Node> *neighbourListItem = currentGraphNode->getFirstOutNeighbour();
+    Graph_Node *currentNeighbour = NULL;
+    Tree_Node *lefterChild = NULL;
+
+    while (neighbourListItem != NULL)
+    {
+        currentNeighbour = neighbourListItem->getData();
+        if (currentNeighbour->color == WHITE)
+        {
+            // Creating a new matching tree node for the current neighbour and settings its parent
+            // using the Tree_Node constructor
+            Tree_Node *neighbourTreeNode = new Tree_Node(currentNeighbour->getKey(), parentTreeNode);
+            if (lefterChild != NULL)
+                lefterChild->setRightSibling(neighbourTreeNode);
+            else
+                parentTreeNode->setLeftChild(neighbourTreeNode);
+            lefterChild = neighbourTreeNode;
+            DFSVisit(currentNeighbour, neighbourTreeNode);
+        }
+        neighbourListItem = neighbourListItem->getNext();
+    }
+
+    currentGraphNode->color = BLACK;
+}
+
+Rooted_Tree *Dynamic_Graph::SCC() const {
+    Stack<Graph_Node> *psiStack = generatePsi();
+    transpose();
+    Stack<Tree_Node> *treeNodeStack = DFS(psiStack);
+    Rooted_Tree *sccRootedTree = new Rooted_Tree();
+    Tree_Node *root = new Tree_Node(0);
+    sccRootedTree->setRoot(root);
+    Tree_Node *lefterChild = NULL;
+    Tree_Node *sccRoot = NULL;
+    while (!treeNodeStack->isEmpty())
+    {
+        sccRoot = treeNodeStack->pop();
+        if (lefterChild != NULL)
+            lefterChild->setRightSibling(sccRoot);
+        else
+            root->setLeftChild(sccRoot);
+        sccRoot->setParent(root);
+        lefterChild = sccRoot;
+    }
+    delete psiStack;
+    delete treeNodeStack;
+    return sccRootedTree;
 }

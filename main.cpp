@@ -131,7 +131,6 @@ int main()
     std::cout << std::endl;
 //    dynamicGraph->generatePsi();
 
+    dynamicGraph->transpose();
     delete dynamicGraph;
-
-
 }
