@@ -129,7 +129,7 @@ int main()
     std::cout << buffer2.str() << std::endl;
 
     std::cout << std::endl;
-    dynamicGraph->generatePsi();
+//    dynamicGraph->generatePsi();
 
     delete dynamicGraph;
 

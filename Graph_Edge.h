@@ -37,6 +37,8 @@ public:
     void setNextEdge(Graph_Edge *nextEdge);
 
     void setPrevEdge(Graph_Edge *prevEdge);
+
+    void transposeEdge();
 };
 
 

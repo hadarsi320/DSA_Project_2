@@ -152,17 +152,18 @@ void Dynamic_Graph::resetColors() const
     }
 }
 
-Stack <Graph_Node> Dynamic_Graph::generatePsi() const
+Stack<Graph_Node> * Dynamic_Graph::generatePsi() const
 {
     resetColors();
     Graph_Node *ptr = _firstGraphNode;
-    Stack<Graph_Node> psiStack;
+    Stack<Graph_Node> *psiStack = new Stack<Graph_Node>();
     while (ptr != NULL)
     {
         if (ptr->color == WHITE)
-            generatePsiVisit(ptr, &psiStack);
+            generatePsiVisit(ptr, psiStack);
         ptr = ptr->getNextNode();
     }
+    return psiStack;
 }
 
 void Dynamic_Graph::generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psiStack) const
@@ -176,4 +177,21 @@ void Dynamic_Graph::generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psi
         neighbourPtr = neighbourPtr->getNext();
     }
     psiStack->push(nodePtr);
+}
+
+void Dynamic_Graph::transpose() const
+{
+    Graph_Node *graphNodePtr = _firstGraphNode;
+    while (graphNodePtr != NULL)
+    {
+        graphNodePtr->transposeNode();
+        graphNodePtr = graphNodePtr->getNextNode();
+    }
+
+    Graph_Edge *graphEdgePtr = _firstGraphEdge;
+    while (graphEdgePtr != NULL)
+    {
+        graphEdgePtr->transposeEdge();
+        graphEdgePtr = graphEdgePtr->getNextEdge();
+    }
 }

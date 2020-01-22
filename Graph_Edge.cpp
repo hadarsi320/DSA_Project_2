@@ -47,3 +47,14 @@ void Graph_Edge::setNextEdge(Graph_Edge *nextEdge) {
 void Graph_Edge::setPrevEdge(Graph_Edge *prevEdge) {
     _prevEdge = prevEdge;
 }
+
+void Graph_Edge::transposeEdge()
+{
+    Graph_Node *tmpNode = _src;
+    _src = _dest;
+    _dest = tmpNode;
+
+    ListItem<Graph_Node> *tmpItem = _destInSrc;
+    _destInSrc = _srcInDest;
+    _srcInDest = tmpItem;
+}

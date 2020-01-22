@@ -24,6 +24,10 @@ private:
 
     void generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psiStack) const;
 
+    Stack<Graph_Node> * generatePsi() const;
+
+    void transpose() const;
+
 public:
     Dynamic_Graph();
 
@@ -39,10 +43,9 @@ public:
 
     Rooted_Tree *BFS(Graph_Node *source) const;
 
+
+
     Rooted_Tree* SCC() const;
-
-    Stack<Graph_Node> generatePsi() const;
-
 };
 
 

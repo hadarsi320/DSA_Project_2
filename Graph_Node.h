@@ -66,6 +66,8 @@ public:
     ListItem<Graph_Node> * getFirstInNeighbour();
 
     ListItem<Graph_Node> * getFirstOutNeighbour();
+
+    void transposeNode();
 };
 
 
