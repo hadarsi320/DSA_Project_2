@@ -106,6 +106,9 @@ void List<T>::remove(ListItem<T> *item)
 
     if(item->getPrev() != NULL)
         item->getPrev()->setNext(item->getNext());
+
+    item->setNext(NULL);
+    item->setPrev(NULL);
 }
 
 #endif //DSA_PROJECT_2_LIST_H

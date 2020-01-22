@@ -78,6 +78,8 @@ Graph_Edge *Dynamic_Graph::Insert_Edge(Graph_Node *from, Graph_Node *to)
 
 void Dynamic_Graph::Delete_Edge(Graph_Edge *edge)
 {
+    if(edge == NULL)
+        return;
     if(edge == _firstGraphEdge)
     {
         _firstGraphEdge = edge->getNextEdge();
@@ -106,7 +108,7 @@ void Dynamic_Graph::BFS_Initialization(Graph_Node *s, Queue<BfsPair> *queue,
 Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
 {
     // initialize BFS
-    Queue<Pair<Graph_Node, Tree_Node>> queue;
+    Queue<Pair<Graph_Node, Tree_Node> > queue;
     Rooted_Tree *bfsTree = new Rooted_Tree;
     BFS_Initialization(source, &queue, bfsTree);
 

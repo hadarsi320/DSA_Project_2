@@ -5,15 +5,15 @@
 #include "Graph_Edge.h"
 
 Graph_Edge::Graph_Edge(Graph_Node *src, Graph_Node *dest) :
-        _src(src), _dest(dest), _destInSrc(NULL), _srcInDest(NULL), _nextEdge(NULL), _prevEdge(NULL) {
-    _destInSrc = _src->addOutNeighbour(_dest);
-    _srcInDest = _dest->addInNeighbour(_src);
+        _src(src), _dest(dest), _destInSrc(_src->addOutNeighbour(_dest)), _srcInDest(_dest->addInNeighbour(_src)), _nextEdge(NULL), _prevEdge(NULL) {
+//    _srcInDest = _dest->addInNeighbour(_src);
+//    _destInSrc = _src->addOutNeighbour(_dest);
 }
 
 Graph_Edge::~Graph_Edge()
 {
-    _src->removeOutNeighbour(_destInSrc);
-    _dest->removeInNeighbour(_srcInDest);
+    _src->removeOutNeighbour(_srcInDest);
+    _dest->removeInNeighbour(_destInSrc);
 }
 
 Graph_Node *Graph_Edge::getSrc() const {
