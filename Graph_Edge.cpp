@@ -14,8 +14,8 @@ Graph_Edge::Graph_Edge(Graph_Node *src, Graph_Node *dest) :
 
 Graph_Edge::~Graph_Edge()
 {
-    _src->removeOutNeighbour(_srcInDest);
-    _dest->removeInNeighbour(_destInSrc);
+    _src->removeOutNeighbour(_destInSrc);
+    _dest->removeInNeighbour(_srcInDest);
 }
 
 Graph_Node *Graph_Edge::getSrc() const {
