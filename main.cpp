@@ -127,10 +127,41 @@ int main()
     buffer2.sputn ("",0);
     dynamicGraph->BFS(graphNodetz[0])->Print_By_Layer(os2);
     std::cout << buffer2.str() << std::endl;
+    delete dynamicGraph;
 
     std::cout << std::endl;
-//    dynamicGraph->generatePsi();
 
-    dynamicGraph->transpose();
+    dynamicGraph = new Dynamic_Graph();
+    Graph_Node * graphNodes[8];
+    for (int i=0; i<8; i++) {
+        graphNodes[i] = dynamicGraph->Insert_Node(i+1);
+    }
+    dynamicGraph->Insert_Edge(graphNodes[0], graphNodes[1]);
+    dynamicGraph->Insert_Edge(graphNodes[0], graphNodes[2]);
+    dynamicGraph->Insert_Edge(graphNodes[1], graphNodes[2]);
+    dynamicGraph->Insert_Edge(graphNodes[2], graphNodes[3]);
+    dynamicGraph->Insert_Edge(graphNodes[2], graphNodes[4]);
+    dynamicGraph->Insert_Edge(graphNodes[4], graphNodes[3]);
+    dynamicGraph->Insert_Edge(graphNodes[4], graphNodes[0]);
+    dynamicGraph->Insert_Edge(graphNodes[5], graphNodes[2]);
+    dynamicGraph->Insert_Edge(graphNodes[5], graphNodes[6]);
+    dynamicGraph->Insert_Edge(graphNodes[6], graphNodes[7]);
+    dynamicGraph->Insert_Edge(graphNodes[7], graphNodes[4]);
+    dynamicGraph->Insert_Edge(graphNodes[7], graphNodes[5]);
+
+
+    Rooted_Tree *sccTree = dynamicGraph->SCC();
+    // printing
+    std::cout << std::endl;
+    std::stringbuf buffer4;      // empty stringbuf
+    std::ostream os4 (&buffer4);  // associate stream buffer to stream
+    // mixing output to buffer with inserting to associated stream:
+    buffer4.sputn ("",0);
+    sccTree->Print_By_Layer(os4);
+    std::cout << buffer4.str() << std::endl;
+
+    delete sccTree;
+    delete dynamicGraph;
+
     delete dynamicGraph;
 }

@@ -30,6 +30,8 @@ private:
 
     void DFSVisit(Graph_Node *currentGraphNode, Tree_Node *parentTreeNode) const;
 
+    void transpose() const;
+
 public:
     Dynamic_Graph();
 
@@ -44,8 +46,6 @@ public:
     void Delete_Edge(Graph_Edge* edge);
 
     Rooted_Tree *BFS(Graph_Node *source) const;
-
-    void transpose() const;
 
     Rooted_Tree* SCC() const;
 };
