@@ -163,9 +163,6 @@ Stack <Graph_Node> Dynamic_Graph::generatePsi() const
             generatePsiVisit(ptr, &psiStack);
         ptr = ptr->getNextNode();
     }
-    while (!psiStack.isEmpty())
-        cout << psiStack.pop()->getKey() << " ";
-    cout << endl;
 }
 
 void Dynamic_Graph::generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psiStack) const
