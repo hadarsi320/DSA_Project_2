@@ -10,7 +10,7 @@
 template <typename T> class List
 {
 private:
-    ListItem<T> * _head;
+    ListItem<T> *_head;
 
 public:
     List(): _head(NULL) {}

@@ -5,7 +5,9 @@
 #include "Graph_Edge.h"
 
 Graph_Edge::Graph_Edge(Graph_Node *src, Graph_Node *dest) :
-        _src(src), _dest(dest), _destInSrc(_src->addOutNeighbour(_dest)), _srcInDest(_dest->addInNeighbour(_src)), _nextEdge(NULL), _prevEdge(NULL) {
+        _src(src), _dest(dest),
+        _destInSrc(_src->addOutNeighbour(_dest)),
+        _srcInDest(_dest->addInNeighbour(_src)), _nextEdge(NULL), _prevEdge(NULL) {
 //    _srcInDest = _dest->addInNeighbour(_src);
 //    _destInSrc = _src->addOutNeighbour(_dest);
 }

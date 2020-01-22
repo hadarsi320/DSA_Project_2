@@ -266,5 +266,6 @@ Rooted_Tree *Dynamic_Graph::SCC() const {
     }
     delete psiStack;
     delete treeNodeStack;
+    transpose();
     return sccRootedTree;
 }
