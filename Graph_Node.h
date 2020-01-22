@@ -28,7 +28,7 @@ public:
 
     Graph_Node(unsigned int key);
 
-//    virtual ~Graph_Node() {}
+    //    virtual ~Graph_Node() {}
 
     unsigned Get_out_Degree() const
     {

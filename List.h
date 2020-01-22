@@ -15,6 +15,10 @@ private:
 public:
     List(): _head(NULL) {}
 
+    List(const List &l);
+
+    List<T> &operator = (const List &l);
+
     virtual ~List();
 
     ListItem<T> *getHead() const;
@@ -30,6 +34,19 @@ public:
     void remove(ListItem<T> *item);
 
 };
+
+template<typename T>
+List<T>::List(const List &l)
+{
+    _head = l._head;
+}
+
+template<typename T>
+List<T> &List<T>::operator=(const List &l)
+{
+    this->_head = l._head;
+    return *this;
+}
 
 template<typename T>
 List<T>::~List()
