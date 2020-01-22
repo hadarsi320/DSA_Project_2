@@ -96,12 +96,7 @@ void Dynamic_Graph::Delete_Edge(Graph_Edge *edge)
 
 void Dynamic_Graph::BFS_Initialization(Graph_Node *s, Queue<BfsPair> *queue,
                                        Rooted_Tree *bfsTree) const {
-    Graph_Node *ptr = _firstGraphNode;
-    while (ptr != NULL)
-    {
-        ptr->color = WHITE;
-        ptr = ptr->getNextNode();
-    }
+    resetColors();
     s->color = GREY;
     Tree_Node *root = new Tree_Node(s->getKey());
     bfsTree->setRoot(root);
@@ -146,3 +141,17 @@ Rooted_Tree *Dynamic_Graph::BFS(Graph_Node *source) const
     }
     return bfsTree;
 }
+
+void Dynamic_Graph::resetColors() const {
+    Graph_Node *ptr = _firstGraphNode;
+    while (ptr != NULL)
+    {
+        ptr->color = WHITE;
+        ptr = ptr->getNextNode();
+    }
+}
+
+//Stack <Graph_Node> Dynamic_Graph::generatePsi() {
+//    resetColors();
+//
+//}

@@ -10,6 +10,7 @@
 #include "Graph_Edge.h"
 #include "Rooted_Tree.h"
 #include "Pair.h"
+#include "Stack.h"
 
 typedef Pair<Graph_Node, Tree_Node> BfsPair;
 
@@ -19,6 +20,10 @@ private:
     Graph_Edge *_firstGraphEdge;
 
     void BFS_Initialization(Graph_Node *s, Queue<BfsPair> *queue, Rooted_Tree *bfsTree) const;
+
+    void resetColors() const;
+
+    Stack<Graph_Node> generatePsi();
 
 public:
     Dynamic_Graph();
@@ -34,6 +39,8 @@ public:
     void Delete_Edge(Graph_Edge* edge);
 
     Rooted_Tree *BFS(Graph_Node *source) const;
+
+    Rooted_Tree* SCC() const;
 };
 
 

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Queue.h"
+#include "Stack.h"
 #include "Dynamic_Graph.h"
 #include "Rooted_Tree.h"
 #include <sstream> //TODO remove this kaki flotz
@@ -8,6 +9,25 @@
 
 int main()
 {
+//    //===================================================
+//    // Testing Stack
+//    int x0 = 0;
+//    int x1 = 1;
+//    int x2 = 2;
+//    Stack<int> stack;
+//    stack.push(&x0);
+//    stack.push(&x1);
+//    stack.push(&x2);
+//    std::cout << *stack.top() << std::endl;
+//    std::cout << *stack.pop() << std::endl;
+//    std::cout << *stack.pop() << std::endl;
+//    std::cout << stack.isEmpty() << std::endl;
+//    std::cout << *stack.pop() << std::endl;
+//    std::cout << stack.isEmpty() << std::endl;
+//    std::cout << std::endl;
+
+    //===================================================
+    // Testing Dynamic Graph
     Dynamic_Graph *dynamicGraph = new Dynamic_Graph();
     Graph_Node *node0 = dynamicGraph->Insert_Node(0);
     Graph_Node *node1 = dynamicGraph->Insert_Node(1);
@@ -109,4 +129,6 @@ int main()
     std::cout << buffer2.str() << std::endl;
 
     delete dynamicGraph;
+
+
 }
