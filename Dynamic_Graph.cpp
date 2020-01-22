@@ -8,7 +8,7 @@ Dynamic_Graph::Dynamic_Graph() : _firstGraphNode(NULL), _firstGraphEdge(NULL) {}
 
 Dynamic_Graph::~Dynamic_Graph()
 {
-    Graph_Edge * edgePtr;
+    Graph_Edge * edgePtr = NULL;
     while(_firstGraphEdge != NULL)
     {
         edgePtr = _firstGraphEdge->getNextEdge();
@@ -16,7 +16,7 @@ Dynamic_Graph::~Dynamic_Graph()
         _firstGraphEdge = edgePtr;
     }
 
-    Graph_Node * nodePtr;
+    Graph_Node * nodePtr = NULL;
     while(_firstGraphNode != NULL)
     {
         nodePtr = _firstGraphNode->getNextNode();
