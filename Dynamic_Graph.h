@@ -18,15 +18,31 @@ private:
     Graph_Node *_firstGraphNode;
     Graph_Edge *_firstGraphEdge;
 
-    void BFS_Initialization(Graph_Node *s, Queue<BfsPair> *queue, Rooted_Tree *bfsTree) const;
-
+    /**
+     * This function sets the color of all of the nodes to white.
+     * This attribute is relevant to functions BFS, DFS, and generatePsi
+     */
     void resetColors() const;
 
+    /**
+     * This function initializes all of the values required to run BFS on the graph.
+     * The function is based on function with the same name from the lecture notes.
+     * @param sourceNode the source node for the BFS tree
+     * @param treeNodeQueue a queue to be used by BFS, where the source node is entered
+     * @param bfsTree an empty tree that is to be made the BFS tree
+     */
+    void BFS_Initialization(Graph_Node *sourceNode, Queue<BfsPair> *treeNodeQueue, Rooted_Tree *bfsTree) const;
+
+    /**
+     * A function similar to DFS_
+     * @param nodePtr
+     * @param psiStack
+     */
     void generatePsiVisit(Graph_Node *nodePtr, Stack<Graph_Node> *psiStack) const;
 
-    Stack<Graph_Node> * generatePsi() const;
+    Stack<Graph_Node> *generatePsi() const;
 
-    Queue<Tree_Node> * DFS(Stack<Graph_Node> *psiStack) const;
+    Queue<Tree_Node> *DFS(Stack<Graph_Node> *psiStack) const;
 
     void DFSVisit(Graph_Node *currentGraphNode, Tree_Node *parentTreeNode) const;
 

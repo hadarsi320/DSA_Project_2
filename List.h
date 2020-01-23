@@ -113,7 +113,6 @@ void List<T>::insert(ListItem<T> *item)
     }
 }
 
-//TODO consider delete item?
 template<typename T>
 void List<T>::remove(ListItem<T> *item)
 {

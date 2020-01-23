@@ -7,10 +7,7 @@
 Graph_Node::Graph_Node(unsigned int key) :
         _key(key), _inAdjacencyList(), _outAdjacencyList(), _nextNode(NULL), _prevNode(NULL), color(NOCOLOR) {}
 
-Graph_Node::~Graph_Node()
-{
-
-}
+Graph_Node::~Graph_Node() {}
 
 unsigned Graph_Node::Get_key() const {
     return _key;
@@ -75,9 +72,6 @@ ListItem<Graph_Node> *Graph_Node::getFirstOutNeighbour() {
 void Graph_Node::transposeNode()
 {
     _outAdjacencyList.swapLists(_inAdjacencyList);
-//    List<Graph_Node> temp = _outAdjacencyList;
-//    _outAdjacencyList = _inAdjacencyList;
-//    _inAdjacencyList = temp;
 }
 
 
